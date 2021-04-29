@@ -519,7 +519,9 @@ connect <- function(connectionDetails = NULL,
     jarPath <- findPathToJar("^SparkJDBC42\\.jar$", pathToDriver)
     driver <- getJbcDriverSingleton("com.simba.spark.jdbc.Driver", jarPath)
     if (missing(connectionString) || is.null(connectionString)) {
-      return
+      connectionString <- paste0("jdbc:spark://", server, ":", port)
+      if (!missing(extraSettings) && !is.null(extraSettings)) {
+        connectionString <- paste0(connectionString, ";", extraSettings)
       }
     }
     connection <- connectUsingJdbcDriver(driver,
