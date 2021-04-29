@@ -514,7 +514,6 @@ connect <- function(connectionDetails = NULL,
     return(connection)
   }
   if (dbms == "spark") {
-    dbms = "hive"
     inform("Connecting using Spark driver")
     jarPath <- findPathToJar("^SparkJDBC42\\.jar$", pathToDriver)
     driver <- getJbcDriverSingleton("com.simba.spark.jdbc.Driver", jarPath)
