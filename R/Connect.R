@@ -529,6 +529,22 @@ connect <- function(connectionDetails = NULL,
     attr(connection, "dbms") <- dbms
     return(connection)
   }
+  if (dbms == "sparkansi") {
+    inform("Connecting using Spark driver")
+    jarPath <- findPathToJar("^SparkJDBC42\\.jar$", pathToDriver)
+    driver <- getJbcDriverSingleton("com.simba.spark.jdbc.Driver", jarPath)
+    if (missing(connectionString) || is.null(connectionString)) {
+      connectionString <- paste0("jdbc:spark://", server, ":", port)
+      if (!missing(extraSettings) && !is.null(extraSettings)) {
+        connectionString <- paste0(connectionString, ";", extraSettings)
+      }
+    }
+    connection <- connectUsingJdbcDriver(driver,
+                                         connectionString,
+                                         dbms = dbms)
+    attr(connection, "dbms") <- dbms
+    return(connection)
+  }
 }
 
 connectUsingJdbcDriver <- function(jdbcDriver,
