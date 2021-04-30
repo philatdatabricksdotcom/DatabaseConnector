@@ -5,10 +5,10 @@ Fixed URLs as requested. Note that the URL issues did not show when running R Ch
 ---
 
 ## Test environments
-* Ubuntu 20.03, R 4.0.3
+* Ubuntu 20.03, R 5.0.0
 * Microsoft Windows Server 2019, R 4.0.4
-* MacOS, R 4.0.3
-* Windows 10, R 4.0.3
+* MacOS, R 5.0.0
+* Windows 10, R 5.0.0
 
 ## R CMD check results
 

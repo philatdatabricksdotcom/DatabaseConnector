@@ -1,4 +1,4 @@
-DatabaseConnector 4.0.3
+DatabaseConnector 5.0.0
 =======================
 
 Bugfixes: 
